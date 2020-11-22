@@ -11,7 +11,6 @@ with open("Skate-bot-settings.json", "r") as f:
 #Sets the bots command prefix and also states what channel it will be active in.
 
 bot = commands.Bot(command_prefix = my_dict['command_prefix'])
-#channel = bot.get_channel(my_dict['channel_id'])
 
 #Notifies you that the bot is ready in the terminal.
 
