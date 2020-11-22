@@ -27,11 +27,19 @@ intermediateTricks = ['hardflip', 'variel flip', 'variel heel', 'tre flip', '360
 advancedTricks = ['forward kickflip', 'forward heelflip', 'nollie hardflip', 'nollie 360 hardflip', 'nollie variel flip', 'double flip',
 'double heelflip', 'double variel heel', 'double variel flip', '360 hardflip']
 
-grinds = ['nose grind', 'willy grind', 'feeble grind', 'crooked grind', '50-50 grind', 'tail slide', 'board slide', 'bs blunt slide',
+a_grinds = ['nose grind', 'willy grind', 'feeble grind', 'crooked grind', '50-50 grind', 'tail slide', 'board slide', 'bs blunt slide',
 'fs blunt slide', 'nose slide', 'nose blunt slide']
 
 b_manuals = ['manual', 'nose manual']
 a_manuals = ['manual', 'nose manual', 'manual revert']
+
+@bot.command()
+async def grinds(ctx):
+	await ctx.send(random.choice(a_grinds))
+
+@bot.command()
+async def manuals(ctx):
+	await ctx.send(random.choice(a_manuals + b_manuals))
 
 @bot.command()
 async def beginner(ctx):
@@ -84,6 +92,10 @@ Just tricks:
 .intermediate - This gives you a random intermediate trick. E.g: Variel flip.
 
 .advanced - This gives you a random advanced trick. E.g: Double hardflip.
+
+.grinds - This gives you a random grind. E.g: Crooked grind.
+
+.manuals - This gives you a random manual. E.g: Nose manual.
 
 lines:
 
