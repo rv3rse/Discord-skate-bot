@@ -1,0 +1,5 @@
+{
+	"bot-token": "example token",
+	"command_prefix": ".",
+	"channel_id": "example channel"
+}

@@ -23,3 +23,5 @@ It was initialy created for the game SkaterXL so that you can get trick ideas or
 .Advancedline - This gives a random advanced line. E.g: Forward kickflip ~ Manual revert.
 
 I am going to add more features to this bot and I hope you enjoy!
+
+<b>DISCLAIMER: You need to remove the "-example" from the Skate-bot-settings-example.json title.</b>

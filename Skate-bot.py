@@ -10,8 +10,8 @@ with open("Skate-bot-settings", "r") as f:
 
 #Sets the bots command prefix and also states what channel it will be active in.
 
-bot = commands.Bot(command_prefix = '.')
-channel = bot.get_channel("channel id")
+bot = commands.Bot(command_prefix = my_dict['command_prefix'])
+channel = bot.get_channel(my_dict['channel_id'])
 
 #Notifies you that the bot is ready in the terminal.
 
@@ -68,12 +68,16 @@ async def advanced-line(ctx):
 
 	await ctx.send(random.choice([advancedline, advancedline2]))
 
+#This is the command that shows all the available commands the bot currently has and how to call them.
+
 @bot.command()
 async def command-help(ctx):
 	await ctx.send(
 """
 ```
-Hello! These are the current commands the bot has:
+Hello! You can use commands by using ".examplecommand".
+
+These are the current commands the bot has:
 
 Just tricks:
 
@@ -92,3 +96,5 @@ lines:
 .Advancedline - This gives a random advanced line. E.g: Forward kickflip ~ Manual revert.
 ``` 
 """)
+
+bot.run(my_dict['bot-token'])
