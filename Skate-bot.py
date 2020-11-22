@@ -1,17 +1,17 @@
 import discord
 from discord.ext import commands
-from discord.ext import Bot
+from discord.ext.commands import Bot
 from discord import DMChannel
 import json
 import random
 
-with open("Skate-bot-settings", "r") as f:
+with open("Skate-bot-settings.json", "r") as f:
 	my_dict = json.load(f)
 
 #Sets the bots command prefix and also states what channel it will be active in.
 
 bot = commands.Bot(command_prefix = my_dict['command_prefix'])
-channel = bot.get_channel(my_dict['channel_id'])
+#channel = bot.get_channel(my_dict['channel_id'])
 
 #Notifies you that the bot is ready in the terminal.
 
@@ -35,7 +35,7 @@ grinds = ['nose grind', 'willy grind', 'feeble grind', 'crooked grind', '50-50 g
 b_manuals = ['manual', 'nose manual']
 a_manuals = ['manual', 'nose manual', 'manual revert']
 
-@bot.command
+@bot.command()
 async def beginner(ctx):
 	await ctx.send(random.choice(beginnerTricks))
 
@@ -45,33 +45,33 @@ async def intermediate(ctx):
 
 @bot.command()
 async def advanced(ctx):
-	await.ctx.send(random.choice(advancedTricks))
+	await ctx.send(random.choice(advancedTricks))
 
 @bot.command()
-async def beginner-line(ctx):
-	beginnerline = random.choice(beginnerTricks) + ' ~ ' + random.choice(grinds)
-	beginnerline2 = random.choice(beginnerTricks) + ' ~ ' + random.choice(b_manuals)
+async def beginnerline(ctx):
+	beginner_line = random.choice(beginnerTricks) + ' ~ ' + random.choice(grinds)
+	beginner_line2 = random.choice(beginnerTricks) + ' ~ ' + random.choice(b_manuals)
 
-	await ctx.send(random.choice([beginnerline, beginnerline2]))
-
-@bot.command()
-async def intermediate-line(ctx):
-	intermediateline = random.choice(intermediate) + ' ~ ' + random.choice(a_manuals)
-	intermediateline2 = random.choice(intermediate) + ' ~ ' + random.choice(grinds)
-
-	await ctx.send(random.choice([intermediateline, intermediateline2]))
+	await ctx.send(random.choice([beginner_line, beginner_line2]))
 
 @bot.command()
-async def advanced-line(ctx):
-	advancedline = random.choice(advanced) + ' ~ ' + random.choice(a_manuals)
-	advancedline2 = random.choice(advanced) + ' ~ ' + random.choice(grinds)
+async def intermediateline(ctx):
+	intermediate_line = random.choice(intermediateTricks) + ' ~ ' + random.choice(a_manuals)
+	intermediate_line2 = random.choice(intermediateTricks) + ' ~ ' + random.choice(grinds)
 
-	await ctx.send(random.choice([advancedline, advancedline2]))
+	await ctx.send(random.choice([intermediate_line, intermediate_line2]))
+
+@bot.command()
+async def advancedline(ctx):
+	advanced_line = random.choice(advancedTricks) + ' ~ ' + random.choice(a_manuals)
+	advanced_line2 = random.choice(advancedTricks) + ' ~ ' + random.choice(grinds)
+
+	await ctx.send(random.choice([advanced_line, advanced_line2]))
 
 #This is the command that shows all the available commands the bot currently has and how to call them.
 
 @bot.command()
-async def command-help(ctx):
+async def commandhelp(ctx):
 	await ctx.send(
 """
 ```
@@ -81,19 +81,19 @@ These are the current commands the bot has:
 
 Just tricks:
 
-.Beginner - This gives you a random beginner trick. E.g: kickflip.
+.beginner - This gives you a random beginner trick. E.g: kickflip.
 
-.Intermediate - This gives you a random intermediate trick. E.g: Variel flip.
+.intermediate - This gives you a random intermediate trick. E.g: Variel flip.
 
-.Advanced - This gives you a random advanced trick. E.g: Double hardflip.
+.advanced - This gives you a random advanced trick. E.g: Double hardflip.
 
 lines:
 
-.Beginnerline - This gives a random beginner line. E.g: Kickflip ~ Nose manual.
+.beginnerline - This gives a random beginner line. E.g: Kickflip ~ Nose manual.
 
-.Intermediateline - This gives a random intermediate line. E.g: Hardflip ~ Crooked grind.
+.intermediateline - This gives a random intermediate line. E.g: Hardflip ~ Crooked grind.
 
-.Advancedline - This gives a random advanced line. E.g: Forward kickflip ~ Manual revert.
+.advancedline - This gives a random advanced line. E.g: Forward kickflip ~ Manual revert.
 ``` 
 """)
 
