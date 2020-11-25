@@ -74,37 +74,56 @@ async def advancedline(ctx):
 
 	await ctx.send(random.choice([advanced_line, advanced_line2]))
 
+@bot.command()
+async def roster(ctx):
+	await ctx.send(
+		"""
+**Wülfpack Team Roster:**
+
+**__Managers:__** Jake, Hans.
+
+**__Editors:__** Landon, Josh.
+
+**__Social media managers:__** Austin, Breon.
+
+**__Scouts:__** Brandon, Austin, Breon.
+
+Feel free to contact any of us with any questions or queries.
+		""")
+
 #This is the command that shows all the available commands the bot currently has and how to call them.
 
 @bot.command()
 async def commandhelp(ctx):
 	await ctx.send(
 """
-```
-Hello! You can use commands by using ".examplecommand".
+**Hello! You can use commands by using ".examplecommand".**
 
 These are the current commands the bot has:
 
-Just tricks:
+**__Tricks__**:
 
-.beginner - This gives you a random beginner trick. E.g: kickflip.
+\t.beginner - This gives you a random beginner trick. E.g: kickflip.
 
-.intermediate - This gives you a random intermediate trick. E.g: Variel flip.
+\t.intermediate - This gives you a random intermediate trick. E.g: Variel flip.
 
-.advanced - This gives you a random advanced trick. E.g: Double hardflip.
+\t.advanced - This gives you a random advanced trick. E.g: Double hardflip.
 
-.grinds - This gives you a random grind. E.g: Crooked grind.
+\t.grinds - This gives you a random grind. E.g: Crooked grind.
 
-.manuals - This gives you a random manual. E.g: Nose manual.
+\t.manuals - This gives you a random manual. E.g: Nose manual.
 
-lines:
+**__lines__**:
 
-.beginnerline - This gives a random beginner line. E.g: Kickflip ~ Nose manual.
+\t.beginnerline - This gives a random beginner line. E.g: Kickflip ~ Nose manual.
 
-.intermediateline - This gives a random intermediate line. E.g: Hardflip ~ Crooked grind.
+\t.intermediateline - This gives a random intermediate line. E.g: Hardflip ~ Crooked grind.
 
-.advancedline - This gives a random advanced line. E.g: Forward kickflip ~ Manual revert.
-``` 
+\t.advancedline - This gives a random advanced line. E.g: Forward kickflip ~ Manual revert.
+
+**__Roster:__**
+
+\t.roster - This shows everyone on the leadership team.
 """)
 
 bot.run(my_dict['bot-token'])
