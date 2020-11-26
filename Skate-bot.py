@@ -55,7 +55,7 @@ async def advanced(ctx):
 
 @bot.command()
 async def beginnerline(ctx):
-	beginner_line = random.choice(beginnerTricks) + ' ~ ' + random.choice(grinds)
+	beginner_line = random.choice(beginnerTricks) + ' ~ ' + random.choice(a_grinds)
 	beginner_line2 = random.choice(beginnerTricks) + ' ~ ' + random.choice(b_manuals)
 
 	await ctx.send(random.choice([beginner_line, beginner_line2]))
@@ -63,16 +63,18 @@ async def beginnerline(ctx):
 @bot.command()
 async def intermediateline(ctx):
 	intermediate_line = random.choice(intermediateTricks) + ' ~ ' + random.choice(a_manuals)
-	intermediate_line2 = random.choice(intermediateTricks) + ' ~ ' + random.choice(grinds)
+	intermediate_line2 = random.choice(intermediateTricks) + ' ~ ' + random.choice(a_grinds)
 
 	await ctx.send(random.choice([intermediate_line, intermediate_line2]))
 
 @bot.command()
 async def advancedline(ctx):
 	advanced_line = random.choice(advancedTricks) + ' ~ ' + random.choice(a_manuals)
-	advanced_line2 = random.choice(advancedTricks) + ' ~ ' + random.choice(grinds)
+	advanced_line2 = random.choice(advancedTricks) + ' ~ ' + random.choice(a_grinds)
 
 	await ctx.send(random.choice([advanced_line, advanced_line2]))
+
+# This shows the team roster
 
 @bot.command()
 async def roster(ctx):
@@ -91,7 +93,7 @@ async def roster(ctx):
 Feel free to contact any of us with any questions or queries.
 		""")
 
-#This is the command that shows all the available commands the bot currently has and how to call them.
+# This is the command that shows all the available commands the bot currently has and how to call them.
 
 @bot.command()
 async def commandhelp(ctx):
