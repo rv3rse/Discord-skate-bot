@@ -1,4 +1,4 @@
-#Skate bot
+<b>Skate bot</b>
 
 This is a discord.py bot I have created for my skater buddies.
 
@@ -25,3 +25,4 @@ It was initialy created for the game SkaterXL so that you can get trick ideas or
 I am going to add more features to this bot and I hope you enjoy!
 
 <b>DISCLAIMER: You need to remove the "-example" from the Skate-bot-settings-example.json title.</b>
+<b>DISCLAIMER: You need to add your own images to the "SOTW" command.</b>
