@@ -10,6 +10,7 @@ with open("Skate-bot-settings.json", "r") as f:
 #Sets the bots command prefix and also states what channel it will be active in.
 
 bot = commands.Bot(command_prefix = my_dict['command_prefix'])
+channel = bot.get_channel("781631030972514335")
 
 #Notifies you that the bot is ready in the terminal.
 
@@ -74,6 +75,18 @@ async def advancedline(ctx):
 
 	await ctx.send(random.choice([advanced_line, advanced_line2]))
 
+@bot.command()
+async def ping(ctx):
+
+	await ctx.send(f'pong! {round(bot.latency * 1000)}ms')
+
+# Spot of the week (SOTW)
+
+@bot.command()
+async def SOTW(ctx):
+
+	await ctx.send("\tSpot of the week: Easy Day High School!", file=discord.File("EasyDay.png"))
+
 # This shows the team roster
 
 @bot.command()
@@ -89,6 +102,8 @@ async def roster(ctx):
 **__Social media managers:__** Austin, Breon.
 
 **__Scouts:__** Brandon, Austin, Breon.
+
+**__Pro skaters:__** Jake, Austin, Breon, Landon, Josh, Hans, Brandon, Adam, Kasai, Kyle, Niko, Daryien and Ryan.
 
 Feel free to contact any of us with any questions or queries.
 		""")
@@ -126,6 +141,14 @@ These are the current commands the bot has:
 **__Roster:__**
 
 \t.roster - This shows everyone on the leadership team.
+
+**___Spot of the week:__**
+
+\t.SOTW - This shows the spot of the week challenge.
+
+**__Ping__**:
+
+\t.ping - This shows the ping from the bot to the server in milliseconds.
 """)
 
 bot.run(my_dict['bot-token'])
