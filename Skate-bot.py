@@ -93,98 +93,73 @@ async def SOTW(ctx):
 
 # Game of skate
 
-
 @bot.command()
 async def skate(ctx):
 
-	beginner_line = random.choice(beginnerTricks) + ' ~ ' + random.choice(a_grinds)
-	beginner_line2 = random.choice(beginnerTricks) + ' ~ ' + random.choice(b_manuals)
+	await ctx.send("Welcome to S-K-A-T-E!")
 
-	beginnerskate = random.choice([beginner_line, beginner_line2])
+	time.sleep(2)
 
-	await ctx.send("Welcome to the game of skate with a twist!")
-	time.sleep(3)
-	await ctx.send("\nWhat is your name: ")
-	time.sleep(3)
+	async def difficulty():
 
-	response = await bot.wait_for('message')
-	name = str(response.content)
+		await ctx.send('\nWhich difficulty would you like to play: \n - beginner \n - intermediate \n - advanced')
 
-	await ctx.send(f"\nWelcome to the game {name}!")
-	time.sleep(3)
-	await ctx.send("\nWhich difficulty would you like: \n - beginner \n - intermediate \n - advanced")
-	time.sleep(3)
+		while True:
 
-	choice = await bot.wait_for('message')
-	difficulty = str(choice.content)
+			respone1 = await bot.wait_for('message')
+			answer1 = str(respone1.content)
 
+			if answer1 == 'beginner':
 
-	if difficulty == 'beginner':
+				await beginner()
+				break
 
-		await ctx.send(f"Here is your first trick, try not to fail: {beginnerskate}")
-		time.sleep(3)
-		await ctx.send('Did you complete the trick first try: ')
+			elif answer1 == 'intermediate':
 
-		response2 = await bot.wait_for('message')
-		answer = str(response2.content)
+				await intermediate()
 
-		if answer == 'yes':
+			elif answer1 == 'advanced':
+
+				await advanced()
+
+			else:
+
+				await ctx.send('Not a valid difficulty.')
+
+				break
+
+	async def beginner():
+
+		pass
+
+		while True:
+
 
 			beginner_line = random.choice(beginnerTricks) + ' ~ ' + random.choice(a_grinds)
 			beginner_line2 = random.choice(beginnerTricks) + ' ~ ' + random.choice(b_manuals)
 
-			beginnerskate2 = random.choice([beginner_line, beginner_line2])
+			beginnerskate = random.choice([beginner_line, beginner_line2])
 
-			await ctx.send('Well done! Your points: 1!')
-			time.sleep(3)
-			await ctx.send(f'Here\'s another trick: {beginnerskate2}')
-			time.sleep(3)
-			await ctx.send('Did you complete the trick: ')
+			await ctx.send(f"\nHere is your trick: {beginnerskate}")
 
-			response3 = await bot.wait_for('message')
-			answer2 = str(response3.content)
+			await ctx.send("\nDid you land the trick: ")
 
-			if answer2 == 'yes':
+			response = await bot.wait_for('message')
+			answer = str(response.content)
 
-				beginner_line = random.choice(beginnerTricks) + ' ~ ' + random.choice(a_grinds)
-				beginner_line2 = random.choice(beginnerTricks) + ' ~ ' + random.choice(b_manuals)
+			if answer == 'yes':
+				await beginner()
+				break
 
-				beginnerskate3 = random.choice([beginner_line, beginner_line2])
+			elif answer == 'no':
+				break
 
-				await ctx.send('Well done! Your points: 2!')
-				time.sleep(3)
-				await ctx.send(f'Here\'s another trick: {beginnerskate3}')
-				time.sleep(3)
-				await ctx.send('Did you complete the trick: ')
-
-				response4 = await bot.wait_for('message')
-				answer3 = str(response4.content)
-
-				if answer3 == 'yes':
-
-					beginner_line = random.choice(beginnerTricks) + ' ~ ' + random.choice(a_grinds)
-					beginner_line2 = random.choice(beginnerTricks) + ' ~ ' + random.choice(b_manuals)
-
-					beginnerskate4 = random.choice([beginner_line, beginner_line2])
-
-					await ctx.send('Well done! Your points: 3!')
-					time.sleep(3)
-					await ctx.send(f'Here\'s another trick: {beginnerskate4}')
-					time.sleep(3)
-					await ctx.send('Did you complete the trick: ')
-
-					response5 = await bot.wait_for('message')
-					answer4 = str(response5.content)
-
-					if answer4 == 'yes':
-
-						await ctx.send('Well done! Your total points: ')
-						time.sleep(3)
-						await ctx.send(f'You win, {name}!')
+			else:
+				await ctx.send('Don\'t understand')
 
 
 
-
+	await difficulty()
 
 
 # This shows the team roster
