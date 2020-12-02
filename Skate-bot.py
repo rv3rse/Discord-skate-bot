@@ -290,6 +290,10 @@ These are the current commands the bot has:
 **__Ping__**:
 
 \t.ping - This shows the ping from the bot to the server in milliseconds.
+
+**__S-K-A-T-E Game:__**
+
+\t.skate - This starts the game of S-K-A-T-E, choose your difficulty and try to achieve a high score! Honesty is key.
 """)
 
 bot.run(my_dict['bot-token'])
