@@ -13,7 +13,7 @@ intents.members = True
 
 #Sets the bots command prefix and also states what channel it will be active in.
 
-bot = commands.Bot(command_prefix = my_dict['command_prefix'], intents=intents)
+bot = commands.Bot(command_prefix = my_dict['command-prefix'], intents=intents)
 channel = bot.get_channel("781631030972514335")
 
 #Notifies you that the bot is ready in the terminal.
@@ -117,10 +117,12 @@ async def skate(ctx):
 			elif answer1 == 'intermediate':
 
 				await intermediate()
+				break
 
 			elif answer1 == 'advanced':
 
 				await advanced()
+				break
 
 			else:
 
@@ -130,9 +132,10 @@ async def skate(ctx):
 
 	async def beginner():
 
-		pass
+		score = 0
+		beginner_play = True
 
-		while True:
+		while beginner_play:
 
 
 			beginner_line = random.choice(beginnerTricks) + ' ~ ' + random.choice(a_grinds)
@@ -148,14 +151,77 @@ async def skate(ctx):
 			answer = str(response.content)
 
 			if answer == 'yes':
-				await beginner()
-				break
+				score = score + 1
 
 			elif answer == 'no':
-				break
+				await ctx.send(f'That was a great attempt! Your score is {score}.')
+				beginner_play = False
 
 			else:
-				await ctx.send('Don\'t understand')
+				await ctx.send('Don\'t understand, exiting game.')
+				beginner_play = False
+
+
+	async def intermediate():
+
+		score = 0
+		intermediate_play = True
+
+		while intermediate_play:
+
+			intermediate_line = random.choice(intermediateTricks) + ' ~ ' + random.choice(a_manuals)
+			intermediate_line2 = random.choice(intermediateTricks) + ' ~ ' + random.choice(a_grinds)
+
+			intermediateskate = random.choice([intermediate_line, intermediate_line2])
+
+			await ctx.send(f"\nHere is your trick: {intermediateskate}")
+
+			await ctx.send("Did you land the trick: ")
+
+			response2 = await bot.wait_for('message')
+			answer2 = str(response2.content)
+
+			if answer2 == 'yes':
+				score = score + 1
+
+			elif answer2 == 'no':
+				await ctx.send(f"That was a great attempt! Your score is {score}.")
+				intermediate_play = False
+
+			else:
+				await ctx.send("Don\'t understand, exiting game.")
+
+	async def advanced():
+
+		score = 0
+		advanced_play = True
+
+		while advanced_play:
+
+				advanced_line = random.choice(advancedTricks) + ' ~ ' + random.choice(a_manuals)
+				advanced_line2 = random.choice(advancedTricks) + ' ~ ' + random.choice(a_grinds)
+
+				advancedskate = random.choice([advanced_line, advanced_line2])
+
+				await ctx.send(f"Here are your tricks: {advancedskate}")
+
+				await ctx.send("Did you land it: ")
+
+				response3 = await bot.wait_for('message')
+				answer3 = str(response3.content)
+
+				if answer3 == 'yes':
+					score = score + 1
+
+				elif answer3 == 'no':
+					await ctx.send(f'That was a great attempt! Your score is {score}.')
+					advanced_play = False
+
+				else:
+					await ctx.send("Don\'t understand, exiting game.")
+					advanced_play = False
+
+
 
 
 
